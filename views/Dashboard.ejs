@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Personal Dashboard[USER]</title>
+  <link rel="stylesheet" href="/css/Dashboard.css">
+</head>
+
+<body>
+  <div class="container">
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <div class="profile">
+        <img src="https://via.placeholder.com/80" alt="Profile Image" class="profile-img">
+        <h2>Sahil_B</h2>
+        <p>Sahil@gmail.com</p>
+      </div>
+      <nav class="nav-menu">
+        <ul>
+          <li>Profile</li>
+          <li>Add Documents</li>
+          <li>Finance</li>
+          <li>Services</li>
+          <li>Edit Details</li>
+        </ul>
+      </nav>
+      <button class="logout-btn">Log Out</button>
+    </div>
+
+    <!-- Content Section -->
+    <div class="content">
+      <header class="header">
+        <h1>Dashboard</h1>
+        <button class="support-btn">Contact Support</button>
+        <button class="hamburger-btn" onclick="toggleSidebar()">☰</button> <!-- Hamburger for mobile -->
+      </header>
+
+      <!-- Cards Section -->
+      <div class="cards">
+        <!-- Card 1 -->
+        <!-- <div class="card">
+          <div class="card-title">Details</div>
+          <div class="card-content"></div>
+        </div> -->
+
+        <!-- Card 2 -->
+        <div class="card">
+          <div class="card-title">Notices</div>
+          <div class="card-content"></div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="card">
+          <div class="card-title">Pending Requests</div>
+          <div class="card-content"></div>
+        </div>
+
+        <!-- Request Maintenance Button -->
+        <div class="card">
+          <div class="card-title">Maintenance</div>
+          <div class="card-content">
+            <button class="request-btn" onclick="openModal()">Request Maintenance</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Maintenance Modal -->
+  <div id="maintenanceModal" class="modal">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closeModal()">&times;</span>
+      <h2>Request Maintenance</h2>
+      <form id="maintenanceForm">
+        <label for="problem">Explain Problem:</label>
+        <textarea id="problem" name="problem" rows="4" placeholder="Describe the issue..."></textarea>
+
+        <label for="personnel">Select Personnel:</label>
+        <select id="personnel" name="personnel">
+          <option value="plumber">Plumber</option>
+          <option value="electrician">Electrician</option>
+          <option value="cleaner">Cleaner</option>
+        </select>
+
+        <label for="mobile">Enter Mobile No:</label>
+        <input type="text" id="mobile" name="mobile" placeholder="91xxxxxxxxxx">
+
+        <button type="submit" class="submit-btn">Send Request</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- External JS File -->
+  <script src="/js/Dashboard.js"></script>
+</body>
+
+</html>

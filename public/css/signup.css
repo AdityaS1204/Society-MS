@@ -1,0 +1,285 @@
+@font-face {
+  font-family: General Sans;
+  src: url("GeneralSans-Medium.otf");
+  src: url("GeneralSans-Regular.otf");
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'General Sans';
+  background-color: #fafaff;
+  color: #30343f;
+}
+
+.container {
+  max-width: 72%;
+  margin: 40px auto;
+  padding: 40px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+  text-align: center;
+}
+
+h1 {
+  font-size: 24px;
+  color: #273469;
+  margin-bottom: 10px;
+}
+
+p {
+  color: #6c757d;
+  margin-bottom: 30px;
+}
+
+.profile-picture {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.profile-picture img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 10px;
+  border: 2px solid #ddd;
+}
+
+.upload-btn-wrapper {
+  position: relative;
+}
+
+.upload-btn {
+  border: none;
+  padding: 10px 20px;
+  background-color: #1abc9c;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.upload-btn-wrapper input[type="file"] {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.file-hint {
+  margin-top: 5px;
+  font-size: 12px;
+  color: #888;
+}
+
+.form-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.form-row.full-width input {
+  width: 100%;
+}
+
+label {
+  flex-basis: 40%;
+  text-align: left;
+  font-weight: bold;
+}
+
+input, select {
+  flex-basis: 55%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+/* Separation Line */
+.section-separator {
+  margin: 30px 0;
+  border: 0;
+  border-top: 2px solid #eee;
+}
+
+/* Document Upload Styles */
+.document-upload {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.upload-card {
+  background-color: #ecf0f1;
+  padding: 20px;
+  border-radius: 10px;
+  width: 48%;
+  text-align: left;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.upload-card h3 {
+  font-size: 18px;
+  color: #34495e;
+  margin-bottom: 12px;
+}
+
+.upload-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+input[type="file"] {
+  padding: 10px;
+  border: 1px solid #bdc3c7;
+  border-radius: 5px;
+  background-color: #fff;
+  flex-grow: 1;
+}
+
+.view-btn {
+  background-color: #1abc9c;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  display: none;  /* Hidden until file is validated */
+}
+
+.view-btn:hover {
+  background-color: #16a085;
+}
+
+.error-message {
+  color: #e74c3c;
+  font-size: 12px;
+  margin-top: 10px;
+}
+
+.submit-btn {
+  background-color: #2980b9;
+  color: white;
+  padding: 15px 40px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-top: 40px;
+  font-size: 16px;
+}
+
+.submit-btn:hover {
+  background-color: #2471a3;
+}
+
+/* Modal Styles */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  width: 90%;
+  max-width: 500px;
+}
+
+.modal-content img {
+  max-width: 100%;
+  max-height: 80vh;
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  cursor: pointer;
+  font-size: 24px;
+  color: #34495e;
+}
+
+@media (max-width: 768px) {
+  .form-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  label {
+    flex-basis: 100%;
+    margin-bottom: 5px;
+  }
+
+  input, select {
+    flex-basis: 100%;
+  }
+
+  .upload-card {
+    width: 100%;
+  }
+}
+/* Modal Styles */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  position: relative; /* Ensure positioning for close button */
+  text-align: center;
+  width: 90%;
+  max-width: 500px;
+}
+
+.modal-content img {
+  max-width: 100%;
+  max-height: 80vh;
+}
+
+/* Close Button */
+.close-btn {
+  position: absolute;
+  top: 10px; /* Position close button inside modal */
+  right: 20px;
+  cursor: pointer;
+  font-size: 24px;
+  color: #34495e; /* Color for the close (X) button */
+}
+
+.close-btn:hover {
+  color: #e74c3c; /* Change color on hover for better visibility */
+}
