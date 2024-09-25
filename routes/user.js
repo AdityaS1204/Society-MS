@@ -17,14 +17,15 @@ router.get('/signup', (req, res) => {
 
 router.post("/signin", async (req,res)=>{
     const { email,password } = req.body;
-    const user = User.matchPassword(email,password);
+    const user = await User.matchPassword(email,password);
 
     console.log("User",user);
+    console.log("user logged in succesfully");
     return res.redirect("/user/dashboard");
 });
 
 router.post("/signup",async(req,res)=>{
-    console.log(req.body);
+    // console.log(req.body);
     const {firstName,lastName,email,Phone,password,address,pincode,role,profileImageURL,familyMembers,occupation}  = req.body;
     await User.create({
         firstName,
@@ -39,7 +40,7 @@ router.post("/signup",async(req,res)=>{
         familyMembers,
         occupation
     });
-    return res.redirect("/user/dashboard");
+    return res.redirect("/user/signin");
 });
 
 router.get('/dashboard',(req,res)=>{
