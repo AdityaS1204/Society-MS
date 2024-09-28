@@ -27,18 +27,17 @@ app.use(checkForAuthenticationCookie("token"));
 
 app.get("/", (req, res) => {
   console.log(req.user);
-
   res.render("home",{
     // user: req.user,
     });
 });
-app.get("/dashboard", (req, res) => {
-  res.render("dashboard",{
-    user: req.user,
-    });
-});
+
 
 app.use("/user",userRoute);
+
+
+
+
 
 
 app.listen(PORT, () =>

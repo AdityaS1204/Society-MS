@@ -48,7 +48,7 @@ const userSchema = new Schema(
     },
     profileImageURL: {
       type: String,
-      default: "images/userimg.png",
+      default: "images/userImg.png",
     },
     familyMembers: {
       type: String,
