@@ -4,7 +4,8 @@ const mongoose = require("mongoose");
 const userRoute = require("./routes/user");
 const { url } = require("inspector");
 const bodyParser = require('body-parser');
-
+const cookieParser = require('cookie-parser');
+const { checkForAuthenticationCookie } = require("./middlewares/authentication");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -21,10 +22,20 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({extended:false}));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-
+app.use(cookieParser());
+app.use(checkForAuthenticationCookie("token"));
 
 app.get("/", (req, res) => {
-  res.render("home");
+  console.log(req.user);
+
+  res.render("home",{
+    // user: req.user,
+    });
+});
+app.get("/dashboard", (req, res) => {
+  res.render("dashboard",{
+    user: req.user,
+    });
 });
 
 app.use("/user",userRoute);
@@ -34,5 +45,3 @@ app.listen(PORT, () =>
   console.log(`server started at http://localhost:${PORT}`)
 );
 
-//13:47 start time.
-//02:03 end (remaining: login logic, dashboard-user-db-connection)

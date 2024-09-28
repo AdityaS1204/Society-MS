@@ -12,10 +12,14 @@
 </head>
 
 <body>
+    <% if (locals.error){ %>
+    <div class="alert alert-primary" role="alert">
+    <%= locals.error %>
+      </div>
+<% } %>
     <div id="main">
  
         <div id="log-container">
-
             <div id="welcome-sec">
                 <div id="pro-img">
                     <!-- <img src="" alt=""> -->

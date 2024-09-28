@@ -17,14 +17,18 @@ router.get('/signup', (req, res) => {
 
 router.post("/signin", async (req,res)=>{
     const { email,password } = req.body;
-    const user = await User.matchPassword(email,password);
-
-    console.log("User",user);
-    console.log("user logged in succesfully");
-    return res.redirect("/user/dashboard");
+    try {
+        const token = await User.matchPasswordAndGenerateToken(email,password);
+        // console.log("token",token);// console.log("user logged in succesfully");
+        return res.cookie('token',token).redirect("/user/dashboard");
+        
+    } catch (error) {
+        return res.render('signin',{
+            error:'Incorrect Email or Password',
+        });
+    }
 });
-
-router.post("/signup",async(req,res)=>{
+router.post('/signup', async (req,res)=>{
     // console.log(req.body);
     const {firstName,lastName,email,Phone,password,address,pincode,role,profileImageURL,familyMembers,occupation}  = req.body;
     await User.create({
@@ -43,7 +47,11 @@ router.post("/signup",async(req,res)=>{
     return res.redirect("/user/signin");
 });
 
-router.get('/dashboard',(req,res)=>{
-    res.render("dashboard")
-})
+router.get('/dashboard', (req, res) => {
+    if (!req.user) {
+      return res.redirect("/user/signin"); // Redirect to login if user is not authenticated
+    }
+    res.render("dashboard", { user: req.user });
+  });
+  
 module.exports = router;
